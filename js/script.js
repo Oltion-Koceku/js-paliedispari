@@ -1,7 +1,14 @@
 
 let validPariDispari = false;
 let validNumber = false;
+let numeroComputer;
+let nUtente;
+let sommaNumeri;
+let pari = false;
+let dispari = false;
+let sommaPD = false;
 
+const output = document.querySelector("h1");
 while (!validPariDispari) {
   const PD = prompt("Scegli tra pari o dispari");
   controlloPD(PD);
@@ -10,15 +17,43 @@ while (!validPariDispari) {
     const numeroUtente = parseInt(prompt("Scegli un numero da 1 a 5"));
     controlloNumero(numeroUtente)
     console.log(numeroUtente);
-    
+    nUtente = numeroUtente
   }
 }
+console.log(pari, dispari);
+randomNumber();
+somma(nUtente, numeroComputer)
+console.log(sommaNumeri);
+if (sommaNumeri % 2 === 0) {
+  sommaPD = true;
+  if(pari === true){
+    output.innerHTML +=`Vince L'utente che ha scelto pari con ${sommaNumeri}`
+  }else{
+    output.innerHTML +=`Vince il Computer che ha scelto pari con ${sommaNumeri}`
+  }
+}else{
+  sommaPD = false;
+  if(dispari === true){
+    output.innerHTML +=`Vince L'utente che ha scelto dispari con ${sommaNumeri}`
+  }else{
+    output.innerHTML +=`Vince il Computer che ha scelto dispari con ${sommaNumeri}`
+  }
+    
+}
+
+console.log("utente----->",nUtente, "computer------->",numeroComputer);
+
 
 // Funzioni
 function controlloPD (scelta){
   
   if (scelta.toLocaleLowerCase() === "pari" || scelta.toLocaleLowerCase() === "dispari") {
     validPariDispari = true
+    if (scelta.toLocaleLowerCase() === "pari") {
+      pari = true;
+    }else if(scelta.toLocaleLowerCase() === "dispari"){
+      dispari = true;
+    }
   }else{
     alert("Non hai scritto correttamente pari o dispari")
   }
@@ -35,4 +70,10 @@ function controlloNumero(scelta){
   }
 }
 
-function randomNumber ()
+function randomNumber (){
+  numeroComputer = Math.floor(Math.random() * 5) + 1;
+}
+
+function somma(numA, numB) {
+  sommaNumeri = numA + numB;
+}

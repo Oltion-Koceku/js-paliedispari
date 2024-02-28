@@ -4,10 +4,14 @@ let validNumber = false;
 
 while (!validPariDispari) {
   const PD = prompt("Scegli tra pari o dispari");
-  console.log(PD);
   controlloPD(PD);
-  const numeroUtente = 5 //parseInt(prompt("Scegli un numero da 1 a 5"));
-
+  console.log(PD);
+  while (!validNumber) {
+    const numeroUtente = parseInt(prompt("Scegli un numero da 1 a 5"));
+    controlloNumero(numeroUtente)
+    console.log(numeroUtente);
+    
+  }
 }
 
 // Funzioni
@@ -22,5 +26,13 @@ function controlloPD (scelta){
 }
 
 function controlloNumero(scelta){
-  if (!isNaN(scelta) && )
+  if (!isNaN(scelta) && scelta <= 5 && scelta > 0){
+    validNumber = true;
+  }else if(isNaN(scelta)){
+    alert("Inserisci un numero e non una stringa")
+  }else{
+    alert("Sbaglieto! Devi inserire un numero che sia da 1 a 5")
+  }
 }
+
+function randomNumber ()
